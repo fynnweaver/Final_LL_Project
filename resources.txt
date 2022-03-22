@@ -1,1 +1,3 @@
 popular insta hashtags: https://blog.wishpond.com/post/115675437462/most-popular-hashtags
+
+CNN embedder tutorial: https://www.activeloop.ai/resources/1E3oKP83o4KXIFChCesv7r/generate-image-embeddings-using-a-pre-trained-cnn-and-store-them-in-hub/
