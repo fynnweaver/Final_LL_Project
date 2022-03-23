@@ -1,3 +1,42 @@
 popular insta hashtags: https://blog.wishpond.com/post/115675437462/most-popular-hashtags
 
 CNN embedder tutorial: https://www.activeloop.ai/resources/1E3oKP83o4KXIFChCesv7r/generate-image-embeddings-using-a-pre-trained-cnn-and-store-them-in-hub/
+
+k-neighbors clustering using image embeddings: https://keras.io/examples/vision/semantic_image_clustering/
+
+
+Clustering versions:
+
+Initial choices:
+Photos with aspect ratios similar 3:2 (landscape)
+Randomly samples from within larger categories to create equal classes
+
+Version 1:
+DomainNet/real + /paintings + Food101
+- Bird, Building, Cold-Blooded, Fashion, Ground_transport, Household, Mammal, Music, Nature, Office, Plants, Sport, Tool, Travel, food, painting
+- 300 per category
+- Travel consists of Sky and Water travel
+- Sub-cats same as paper
+    - dropped 'diamond', 'flying saucer', 'map', 'calendar', 'passport', 'stitches', 'nail', 'wheel', 'bandage'
+- USER ERROR: food_dir had duplicate painting images, hence version 1 preference to paintings and painting duplicates
+ResNet 18 embeddings pre-trained
+Dot matrix similarity 
+    - 16 clusters (16 image directories)
+    - 5 neighbors to find
+    
+Version 2:
+DomainNet/real + Food101 + Flowers
+- Bird, Cold-Blooded, Ground_transport, Household, Mammal, Nature, Office, Plants, Sport, Travel, food, flower
+- 600 per category
+    - 300 in plants and sports
+    - 500 in Birds
+- sub-cats shifted among categories
+    -dropped same as above plus domainnet flower subcat
+ResNET
+dot matrix similarity
+- 12 clusters
+- 7 neighbors to find
+
+Version 3:
+Return to version 1 without the user error and with re-randomized photos. This is the last version where photos should be pulled and randomized. Standardized visaul evaluation of repeated image outputs impossible otherwise.
+- More widely doesn't seem very feasible, given that I choose new cats and sub-cats each time I can't be sure what's initially chosen as standardized images will remain. Having set random_seed might help but if a cat is lost nothing to be done.

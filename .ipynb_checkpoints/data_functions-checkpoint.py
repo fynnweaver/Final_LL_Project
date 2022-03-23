@@ -73,17 +73,20 @@ def sub_sample_domain(cat_df, sample_total = 200):
     #save categories containing less then input sample total
     to_undersample = cat_df.value_counts('category')[cat_df.value_counts('category') > sample_total].index
     
+    test_images= []
     #for each of those categories calculate how many to drop, sample that number, and drop them
     for category_name in to_undersample:
         
         category = cat_df.loc[cat_df['category'] == category_name]
         num_drop = len(category) - sample_total
         
-        test_subset = cat_df.loc[cat_df['category'] == category_name].sample(num_drop)
-        cat_df.drop(test_subset.index, inplace = True)
+        drop_subset = cat_df.loc[cat_df['category'] == category_name].sample(num_drop)
+        cat_df.drop(drop_subset.index, inplace = True)
         
+        #joining random images from subset to create a test image list
+        test_images.append(drop_subset.iloc[0])
     
-    return cat_df
+    return cat_df, test_images
 
  
 #visualizing image categories
