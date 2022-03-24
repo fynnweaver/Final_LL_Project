@@ -22,7 +22,6 @@ DomainNet/real + /paintings + Food101
 ResNet 18 embeddings pre-trained
 Dot matrix similarity 
     - 16 clusters (16 image directories)
-    - 5 neighbors to find
     
 Version 2:
 DomainNet/real + Food101 + Flowers
@@ -35,8 +34,12 @@ DomainNet/real + Food101 + Flowers
 ResNET
 dot matrix similarity
 - 12 clusters
-- 7 neighbors to find
 
 Version 3:
-Return to version 1 without the user error and with re-randomized photos. This is the last version where photos should be pulled and randomized. Standardized visaul evaluation of repeated image outputs impossible otherwise.
-- More widely doesn't seem very feasible, given that I choose new cats and sub-cats each time I can't be sure what's initially chosen as standardized images will remain. Having set random_seed might help but if a cat is lost nothing to be done.
+Return to version 1 without the user error and with seed(30) or non-random subsampling. The purpose of this version was two-fold:
+- to create and test consistent photo saving (as near as possible). For example with the same given cat and subcat inputs the same photos will be saved in the same order each time.
+- To explore/create quantative evaluation framework using class labels and model prediction
+[Note: must redo neighborhood evaluation with change in evaluate_image_sim code]
+
+Version 4:
+Return to version 2 with seed(30) or non-random subsampling and method of evaluation

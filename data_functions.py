@@ -59,7 +59,7 @@ def tfds_to_frame(tfds_images, tfds_labels, subsample = False):
         return key
 
     
-def sub_sample_domain(cat_df, sample_total = 200):
+def sub_sample_domain(cat_df, random = True, sample_total = 200):
     """Randomly creates subsample of every category in cat_df with count above the sample_total threshold.
     
     INPUT
@@ -80,7 +80,13 @@ def sub_sample_domain(cat_df, sample_total = 200):
         category = cat_df.loc[cat_df['category'] == category_name]
         num_drop = len(category) - sample_total
         
-        drop_subset = cat_df.loc[cat_df['category'] == category_name].sample(num_drop)
+        #sample randomly or by slice
+        if bool(random):
+            drop_subset = cat_df.loc[cat_df['category'] == category_name].sample(num_drop)
+        else:
+            drop_subset = cat_df.loc[cat_df['category'] == category_name][:num_drop]
+        
+        
         cat_df.drop(drop_subset.index, inplace = True)
         
         #joining random images from subset to create a test image list
