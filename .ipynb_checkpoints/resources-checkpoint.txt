@@ -26,6 +26,7 @@ Dot matrix similarity
 Version 2:
 DomainNet/real + Food101 + Flowers
 - Bird, Cold-Blooded, Ground_transport, Household, Mammal, Nature, Office, Plants, Sport, Travel, food, flower
+- Added Building to Travel category
 - 600 per category
     - 300 in plants and sports
     - 500 in Birds
@@ -39,7 +40,26 @@ Version 3:
 Return to version 1 without the user error and with seed(30) or non-random subsampling. The purpose of this version was two-fold:
 - to create and test consistent photo saving (as near as possible). For example with the same given cat and subcat inputs the same photos will be saved in the same order each time.
 - To explore/create quantative evaluation framework using class labels and model prediction
-[Note: must redo neighborhood evaluation with change in evaluate_image_sim code]
 
 Version 4:
 Return to version 2 with seed(30) or non-random subsampling and method of evaluation
+
+Version 5:
+DomainNet/real only
+- Bird, Building, Cold-Blooded, Food, Ground_transport, Household, Mammal, Music, Nature, Office, Plants, Sky_transport, Sport, Water_transport
+- 500 per category
+    - 300 in plants, sports, sky_transport, and music
+- Note that the travel category has been dissolved completely back into original categories
+- Drops subcat rainbow in addition to original drops from version 1
+
+Version 6: 
+DomainNet/real only
+- Travel category from Version 1 & merge plants into nature
+- Bird, Building, Cold-Blooded, Food, Ground_transport, Household, Mammal, Music, Nature, Office, Sport, Tool, Travel
+- moved house to into Building, scuba into Travel, pool into Travel
+- Drop sub cats of version 5 + diving_board + roller coasters + hot tub + dolphins  
+- 500 per category
+- Manual deletions: don't make difference
+    - Birds: 50, Building: 25, Cold-Blooded: 30, Food: 7, Groundtransport - Water: < 5, 
+    
+I have realized true to its nature as an unsupervised learning thing, changing the categories does nothing but change evaluation metrics/how we assess the groups. Similarly this means theres no train or test data. Just a 'photo directory' and 'new input photos'.
