@@ -54,7 +54,7 @@ def tfds_to_frame(tfds_images, tfds_labels, subsample = False):
         print('Warning: dataframe row length changed!')
     
     if bool(subsample):
-        return key.sample(subsample)
+        return key.iloc[:subsample]
     else:
         return key
 

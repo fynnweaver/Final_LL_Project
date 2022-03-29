@@ -1,0 +1,65 @@
+popular insta hashtags: https://blog.wishpond.com/post/115675437462/most-popular-hashtags
+
+CNN embedder tutorial: https://www.activeloop.ai/resources/1E3oKP83o4KXIFChCesv7r/generate-image-embeddings-using-a-pre-trained-cnn-and-store-them-in-hub/
+
+k-neighbors clustering using image embeddings: https://keras.io/examples/vision/semantic_image_clustering/
+
+
+Clustering versions:
+
+Initial choices:
+Photos with aspect ratios similar 3:2 (landscape)
+Randomly samples from within larger categories to create equal classes
+
+Version 1:
+DomainNet/real + /paintings + Food101
+- Bird, Building, Cold-Blooded, Fashion, Ground_transport, Household, Mammal, Music, Nature, Office, Plants, Sport, Tool, Travel, food, painting
+- 300 per category
+- Travel consists of Sky and Water travel
+- Sub-cats same as paper
+    - dropped 'diamond', 'flying saucer', 'map', 'calendar', 'passport', 'stitches', 'nail', 'wheel', 'bandage'
+- USER ERROR: food_dir had duplicate painting images, hence version 1 preference to paintings and painting duplicates
+ResNet 18 embeddings pre-trained
+Dot matrix similarity 
+    - 16 clusters (16 image directories)
+    
+Version 2:
+DomainNet/real + Food101 + Flowers
+- Bird, Cold-Blooded, Ground_transport, Household, Mammal, Nature, Office, Plants, Sport, Travel, food, flower
+- Added Building to Travel category
+- 600 per category
+    - 300 in plants and sports
+    - 500 in Birds
+- sub-cats shifted among categories
+    -dropped same as above plus domainnet flower subcat
+ResNET
+dot matrix similarity
+- 12 clusters
+
+Version 3:
+Return to version 1 without the user error and with seed(30) or non-random subsampling. The purpose of this version was two-fold:
+- to create and test consistent photo saving (as near as possible). For example with the same given cat and subcat inputs the same photos will be saved in the same order each time.
+- To explore/create quantative evaluation framework using class labels and model prediction
+
+Version 4:
+Return to version 2 with seed(30) or non-random subsampling and method of evaluation
+
+Version 5:
+DomainNet/real only
+- Bird, Building, Cold-Blooded, Food, Ground_transport, Household, Mammal, Music, Nature, Office, Plants, Sky_transport, Sport, Water_transport
+- 500 per category
+    - 300 in plants, sports, sky_transport, and music
+- Note that the travel category has been dissolved completely back into original categories
+- Drops subcat rainbow in addition to original drops from version 1
+
+Version 6: 
+DomainNet/real only
+- Travel category from Version 1 & merge plants into nature
+- Bird, Building, Cold-Blooded, Food, Ground_transport, Household, Mammal, Music, Nature, Office, Sport, Tool, Travel
+- moved house to into Building, scuba into Travel, pool into Travel
+- Drop sub cats of version 5 + diving_board + roller coasters + hot tub + dolphins  
+- 500 per category
+- Manual deletions: don't make difference
+    - Birds: 50, Building: 25, Cold-Blooded: 30, Food: 7, Groundtransport - Water: < 5, 
+    
+I have realized true to its nature as an unsupervised learning thing, changing the categories does nothing but change evaluation metrics/how we assess the groups. Similarly this means theres no train or test data. Just a 'photo directory' and 'new input photos'.
