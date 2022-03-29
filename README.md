@@ -3,7 +3,9 @@ Combining an image recommender engine with duplicate detection neural net for su
 
 To run image recommender follow these steps:
 1. Clone git repo
-2. Run `DataCollection.ipynb` (takes roughly 4 hours total) OR download and unzip a reference image directory of 6K images [here](https://drive.google.com/file/d/1A_617wTSzrRnUj74aTKO8Qz7Frr9wFgT/view?usp=sharing). The folder containing images should be in the directory above the repository and have the following structure:
+2. a) Run `DataCollection.ipynb` (takes roughly 4 hours total) changing any paths to local to your computer  
+   b) OR download and unzip a reference image directory of 6K images [here](https://drive.google.com/file/d/1A_617wTSzrRnUj74aTKO8Qz7Frr9wFgT/view?usp=sharing). 
+Either way, the folder containing images should be in the directory above the repository and have the following structure:
 
 ```
 - <data_dir>
