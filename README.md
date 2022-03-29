@@ -3,7 +3,7 @@ Combining an image recommender engine with duplicate detection neural net for su
 
 To run image recommender follow these steps:
 1. Clone git repo
-2. Run `DataCollection.ipynb` (takes roughly 4 hours total) OR download and unzip a reference image directory of 6K images [here](). The folder containing images should be in the directory above the repository and have the following structure:
+2. Run `DataCollection.ipynb` (takes roughly 4 hours total) OR download and unzip a reference image directory of 6K images [here](https://drive.google.com/file/d/1A_617wTSzrRnUj74aTKO8Qz7Frr9wFgT/view?usp=sharing). The folder containing images should be in the directory above the repository and have the following structure:
 
 ```
 - <data_dir>
@@ -19,4 +19,4 @@ To run image recommender follow these steps:
 
 To explore the pieces of the `return_recommendation` functions use the `BuildingRecommender.ipynb` notebook. 
 
-The original `distribution_clustering` repo can be found [here]()
+The original `distribution_clustering` repo can be found [here](https://github.com/EricElmoznino/distribution_clustering)
