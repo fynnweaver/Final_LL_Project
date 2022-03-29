@@ -9,6 +9,7 @@ To run image recommender follow these steps:
 - <data_dir>
     - samples
           - features.npy
+          - centers.npy
           - pics
              - <first file>
              - ...
