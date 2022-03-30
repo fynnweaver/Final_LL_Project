@@ -12,6 +12,7 @@ To run image recommender follow these steps:
     - features.npy
     - centers.npy
     - samples
+         - pics
              - <first file>
              - ...
 ```
