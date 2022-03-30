@@ -1,5 +1,5 @@
 # Final_LL_Project
-Combining an image recommender engine with duplicate detection neural net for suggestions only containing original content.
+Combining an image recommender engine with duplicate detection for suggestions of visually similar images only containing original content.
 
 To run image recommender follow these steps:
 1. Clone git repo
