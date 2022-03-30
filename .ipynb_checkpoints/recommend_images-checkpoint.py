@@ -17,7 +17,7 @@ import requests
 from io import BytesIO
 
 #Step 1. Embed 
-sys.path.insert(0, os.path.abspath(r'.\distribution_clustering'))
+sys.path.insert(0, os.path.abspath('./distribution_clustering'))
 from save_dataset_features import save_features_test
 
 
@@ -104,6 +104,7 @@ def return_recommendation(input_path, dir_path, plot_similar = True):
     print(closest_cluster)
     #Step 5. Get other images from cluster
     similar_imgs = os.listdir(os.path.join(dir_path, 'clusters', str(closest_cluster)))
+    
     #turn into int corresponding to embed index, get embeds
     similar_idx = []
     similar_embeds = []
@@ -112,10 +113,10 @@ def return_recommendation(input_path, dir_path, plot_similar = True):
 
         image_idx = get_image(temp_idx, file_key)
         #append based on image idx
-
-        similar_idx.append(image_idx)
-        similar_embeds.append(embed_dir[image_idx])
         
+        similar_idx.append(int(temp_idx))
+        similar_embeds.append(embed_dir[image_idx])
+    print(similar_idx)
     #Step 6. Check for duplicates
     similar_distances = get_distance(input_embed, np.asarray(similar_embeds))
     if min(similar_distances) == 0:
@@ -144,7 +145,9 @@ def return_recommendation(input_path, dir_path, plot_similar = True):
         axes[0,0].title.set_text('Input')
         
         for i, ax in enumerate(axes.flat[1:]):
-            ax.imshow((image_dir[similar_idx[i]][0].detach().numpy().transpose(1, 2, 0)* 255).astype(np.uint8))
+            im = Image.open(os.path.join(dir_path, 'samples/pics', similar_imgs[i]))
+            
+            ax.imshow(im)
         
         plt.savefig(os.path.join(input_path, 'recommendations.jpeg'))
 
