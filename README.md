@@ -1,5 +1,7 @@
 # Final_LL_Project
-Combining an image recommender engine with duplicate detection for suggestions of visually similar images only containing original content.
+Combining an image recommender engine with duplicate detection for suggestions of visually similar images only containing original content. To see some examples of input images with their suggestions see the `results` folder. Below is one such example:
+
+![recommendation_example](results/flower_recs)
 
 To run image recommender follow these steps:
 1. Clone git repo
