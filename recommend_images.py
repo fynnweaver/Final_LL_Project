@@ -35,7 +35,7 @@ def get_file_key(path):
         file_keys.append(temp_key)
     
     file_keys_df = pd.DataFrame(file_keys, columns = ['idx', 'file_name']).set_index('idx')
-
+    
     return file_keys_df
 
 # translate input file name to index within dataset
@@ -116,7 +116,7 @@ def return_recommendation(input_path, dir_path, plot_similar = True):
         
         similar_idx.append(int(temp_idx))
         similar_embeds.append(embed_dir[image_idx])
-    print(similar_idx)
+    
     #Step 6. Check for duplicates
     similar_distances = get_distance(input_embed, np.asarray(similar_embeds))
     if min(similar_distances) == 0:
